@@ -1,21 +1,31 @@
-// Декоратор для додавання timestamp
-export function withTimestamp<This, Args extends [string, ...any[]], Return>(
-  originalMethod: (this: This, ...args: Args) => Return,
-  context: ClassMethodDecoratorContext<
-    This,
-    (this: This, ...args: Args) => Return
-  >
-): (this: This, ...args: Args) => Return {
-  // TODO: Implement the decorator
+export function withTimestamp(
+  _target: object,
+  _propertyKey: string,
+  descriptor: PropertyDescriptor
+): PropertyDescriptor {
+  const original = descriptor.value;
+
+  descriptor.value = function (message: string) {
+    const now = new Date();
+    const timestamp = now.toISOString()
+      .replace('T', ' ')
+      .substring(0, 19);
+    return original.call(this, `[${timestamp}] ${message}`);
+  };
+
+  return descriptor;
 }
 
-// Декоратор для перетворення в верхній регістр
-export function uppercase<This, Args extends [string, ...any[]], Return>(
-  originalMethod: (this: This, ...args: Args) => Return,
-  context: ClassMethodDecoratorContext<
-    This,
-    (this: This, ...args: Args) => Return
-  >
-): (this: This, ...args: Args) => Return {
-  // TODO: Implement the decorator
+export function uppercase(
+  _target: object,
+  _propertyKey: string,
+  descriptor: PropertyDescriptor
+): PropertyDescriptor {
+  const original = descriptor.value;
+
+  descriptor.value = function (message: string) {
+    return original.call(this, message.toUpperCase());
+  };
+
+  return descriptor;
 }

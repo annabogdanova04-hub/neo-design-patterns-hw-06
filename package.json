@@ -8,8 +8,20 @@
         "start": "ts-node src/main.ts"
     },
     "devDependencies": {
-        "typescript": "^5.0.0",
-        "ts-node": "^10.9.1",
-        "@types/node": "^18.0.0"
-    }
+        "@types/node": "^18.19.130",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/annabogdanova04-hub/neo-design-patterns-hw-06.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "bugs": {
+        "url": "https://github.com/annabogdanova04-hub/neo-design-patterns-hw-06/issues"
+    },
+    "homepage": "https://github.com/annabogdanova04-hub/neo-design-patterns-hw-06#readme"
 }
